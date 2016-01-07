@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Answer: " />
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/label"
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/one"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="40dp"
+        android:text="1" />
+<!--Buttons For Numbers and Decimal-->
+    <Button
+        android:id="@+id/two"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/one"
+        android:layout_alignTop="@id/one"
+        android:text="2" />
+    <Button
+        android:id="@+id/three"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/two"
+        android:layout_alignTop="@id/two"
+        android:text="3" />
+    <Button
+        android:id="@+id/four"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/one"
+        android:layout_alignLeft="@id/one"
+        android:text="4" />
+    <Button
+        android:id="@+id/five"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/four"
+        android:layout_alignTop="@id/four"
+        android:text="5" />
+    <Button
+        android:id="@+id/six"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/five"
+        android:layout_alignTop="@id/five"
+        android:text="6" />
+    <Button
+        android:id="@+id/seven"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/four"
+        android:layout_alignLeft="@id/four"
+        android:text="7" />
+    <Button
+        android:id="@+id/eight"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/seven"
+        android:layout_alignTop="@id/seven"
+        android:text="8" />
+    <Button
+        android:id="@+id/nine"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/eight"
+        android:layout_alignTop="@id/eight"
+        android:text="9" />
+    <Button
+        android:id="@+id/zero"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/eight"
+        android:layout_alignLeft="@id/eight"
+        android:text="0" />
+    <Button
+        android:id="@+id/point"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/seven"
+        android:layout_alignLeft="@id/seven"
+        android:text="." />
+<!--Buttons for operators-->
+    <Button
+        android:id="@+id/addition"
+        android:layout_width="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/three"
+        android:layout_alignTop="@id/three"
+        android:text="+" />
+    <Button
+        android:id="@+id/subtraction"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/addition"
+        android:layout_alignLeft="@id/addition"
+        android:text="-" />
+    <Button
+        android:id="@+id/multiplication"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subtraction"
+        android:layout_alignLeft="@id/subtraction"
+        android:text="*" />
+    <Button
+        android:id="@+id/division"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/multiplication"
+        android:layout_alignLeft="@id/multiplication"
+        android:text="/" />
+<!--TESTING-->
+    <Button
+        android:id="@+id/infix"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/point"
+        android:layout_alignLeft="@id/one"
+        android:layout_alignRight="@id/three"
+        android:text="infix" />
+    <Button
+        android:id="@+id/postfix"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/infix"
+        android:layout_alignLeft="@id/infix"
+        android:layout_alignRight="@id/infix"
+        android:text="postfix" />
+    <Button
+        android:id="@+id/clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/one"
+        android:layout_below="@id/postfix"
+        android:text="Clear" />
+    <Button
+        android:id="@+id/clearall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/clear"
+        android:layout_below="@id/postfix"
+        android:text="Clear All" />
+    <Button
+        android:id="@+id/answerButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/clear"
+        android:layout_alignLeft="@id/infix"
+        android:layout_alignRight="@id/infix"
+        android:text="answer" />
+</RelativeLayout>

@@ -48,7 +48,7 @@ namespace function_test_1
 			Button clear = FindViewById<Button> (Resource.Id.clear);
 			Button clearAll = FindViewById<Button> (Resource.Id.clearall);
 
-			//TESTING
+//TESTING
 			Button infixButton = FindViewById<Button> (Resource.Id.infix);
 			Button postfixButton = FindViewById<Button> (Resource.Id.postfix);
 			Button answerButton = FindViewById<Button> (Resource.Id.answerButton);
@@ -172,8 +172,7 @@ namespace function_test_1
 				for(int i = 0; i< ans.Length;i++)
 				{
 					temp1 = double.NaN;
-
-					if("*/+-".Contains(ans[i]))
+					if("*/+-^".Contains(ans[i]))
 					{
 
 						switch(ans[i])
@@ -200,6 +199,12 @@ namespace function_test_1
 								eval.Push(eval.Pop() / temp1);
 								break;
 							}
+						case("^"):
+							{
+								temp1 = eval.Pop();
+								eval.Push(Math.Pow(eval.Pop(), temp1));
+								break;
+							}
 						}
 					}
 					else
@@ -208,6 +213,21 @@ namespace function_test_1
 						eval.Push(double.Parse(ans[i]));
 					}
 				}
+//TESTING
+				//Check that eval has only 1 number on it's stack
+				try 
+				{
+					if(eval.Count > 1)
+					{
+						throw Exception("Equation not valid. Stack should have final answer remaining");
+					}
+					//Put line 231 and 232 here if successful
+				}
+				catch (Exception e)
+				{
+					
+				}
+
 				answer.Text = eval.Pop().ToString();
 				clear_text = true;
 			};

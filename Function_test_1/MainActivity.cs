@@ -6,7 +6,7 @@ using System;
 
 namespace function_test_1
 {
-	[Activity (Label = "Calculator_proto_2", MainLauncher = true, Icon = "@mipmap/icon")]
+	[Activity (Label = "Calculator_proto_3", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class MainActivity : Activity
 	{
 		private string infix = string.Empty;

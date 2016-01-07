@@ -43,6 +43,7 @@ namespace function_test_1
 			Button subtraction = FindViewById<Button> (Resource.Id.subtraction);
 			Button multiplication = FindViewById<Button> (Resource.Id.multiplication);
 			Button division = FindViewById<Button> (Resource.Id.division);
+			Button power = FindViewById<Button> (Resource.Id.power);
 
 			Button clear = FindViewById<Button> (Resource.Id.clear);
 			Button clearAll = FindViewById<Button> (Resource.Id.clearall);
@@ -70,13 +71,31 @@ namespace function_test_1
 			multiplication.Click += new EventHandler (MyOperatorClick);
 			division.Click += new EventHandler (MyOperatorClick);
 
+			//when clicked, will insert '^' into infix string
+			//Takes number to left and multiplies itself y-1 times.
+			//In postfix, the two numbers will be to the left of the operator
+			//It will pop off the last 2 numbers, do the power operation, and return the answer to the stack
+			power.Click += delegate
+			{
+				if (answer.Text.Length > 0) 
+				{	
+					clear_text = true;
+					is_decimal = false;
+					has_operator = true;
+					answer.Text = "(^)";
+					str_operator = "^";
+				}
+			};
+
 //The infix string created dynamically.
 			infixButton.Click += delegate {
 				clear_text = true;
 				answer.Text = infix;
 			};
 
+//TESTING
 //Take infix and make postfix
+//Deal with power oeprator precedence
 			postfixButton.Click += delegate
 			{
 				postfix = string.Empty;
@@ -106,6 +125,11 @@ namespace function_test_1
 									postfix += operator_stack.Pop() + ",";
 									operator_stack.Push(infix[i].ToString());
 								}
+							}
+							//For power 
+							else if(infix[i].ToString() == "^")
+							{
+								operator_stack.Push(infix[i].ToString());
 							}
 							//For multiplication/division
 							else

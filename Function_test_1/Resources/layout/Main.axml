@@ -124,6 +124,13 @@
         android:layout_below="@id/multiplication"
         android:layout_alignLeft="@id/multiplication"
         android:text="/" />
+    <Button
+        android:id="@+id/power"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/division"
+        android:layout_alignLeft="@id/multiplication"
+        android:text="x^y" />
 <!--TESTING-->
     <Button
         android:id="@+id/infix"

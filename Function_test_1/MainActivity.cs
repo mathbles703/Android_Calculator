@@ -130,7 +130,7 @@ namespace function_test_1
 									operator_stack.Push(infix[i].ToString());
 								}
 							}
-							//For power 
+							//For power (Integration Branch ONLY)
 							else if(infix[i].ToString() == "^")
 							{
 								operator_stack.Push(infix[i].ToString());

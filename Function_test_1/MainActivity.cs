@@ -102,7 +102,7 @@ namespace function_test_1
 				for(int i = 0; i < infix.Length;i++)
 				{
 					//if the current token is not operator
-					if(!"*+-/".Contains(infix[i].ToString()))
+					if(!"*+-/^".Contains(infix[i].ToString()))
 					{
 						postfix += infix[i];
 					}
@@ -120,9 +120,13 @@ namespace function_test_1
 							if("+-".Contains(infix[i].ToString()))
 							{
 								//if stack.peek is (+-) then pop to string
-								if(operator_stack.Peek() == "+" || operator_stack.Peek() == "-" || operator_stack.Peek() == "*" || operator_stack.Peek() == "/")
+								//while peek is one of these, pop and add, finally push
+								if(operator_stack.Peek() == "+" || operator_stack.Peek() == "-" || operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^")
 								{
-									postfix += operator_stack.Pop() + ",";
+									while(operator_stack.Count != 0)
+									{
+										postfix += operator_stack.Pop() + ",";
+									}
 									operator_stack.Push(infix[i].ToString());
 								}
 							}
@@ -134,9 +138,12 @@ namespace function_test_1
 							//For multiplication/division
 							else
 							{
-								if(operator_stack.Peek() == "*" || operator_stack.Peek() == "/")
+								if(operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^")
 								{
-									postfix += operator_stack.Pop() + ",";
+									while(operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^")
+									{
+										postfix += operator_stack.Pop() + ",";
+									}
 								}
 								operator_stack.Push(infix[i].ToString());
 
@@ -217,15 +224,17 @@ namespace function_test_1
 				//Check that eval has only 1 number on it's stack
 				try 
 				{
+					//ensures that the answer is the only remaining number on the stack. 
+					//If there is more, that means the equation was not validated.
 					if(eval.Count > 1)
 					{
-						throw Exception("Equation not valid. Stack should have final answer remaining");
+						throw new Exception("Equation not valid. Stack should have final answer remaining");
 					}
 					//Put line 231 and 232 here if successful
 				}
 				catch (Exception e)
 				{
-					
+					answer.Text = e.Message;
 				}
 
 				answer.Text = eval.Pop().ToString();

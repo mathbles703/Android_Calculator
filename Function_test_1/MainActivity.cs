@@ -44,6 +44,7 @@ namespace function_test_1
 			Button multiplication = FindViewById<Button> (Resource.Id.multiplication);
 			Button division = FindViewById<Button> (Resource.Id.division);
 			Button power = FindViewById<Button> (Resource.Id.power);
+			Button modulo = FindViewById<Button> (Resource.Id.modulo);
 
 			Button clear = FindViewById<Button> (Resource.Id.clear);
 			Button clearAll = FindViewById<Button> (Resource.Id.clearall);
@@ -70,7 +71,7 @@ namespace function_test_1
 			subtraction.Click += new EventHandler (MyOperatorClick);
 			multiplication.Click += new EventHandler (MyOperatorClick);
 			division.Click += new EventHandler (MyOperatorClick);
-
+			modulo.Click += new EventHandler (MyOperatorClick);
 			//when clicked, will insert '^' into infix string
 			//Takes number to left and multiplies itself y-1 times.
 			//In postfix, the two numbers will be to the left of the operator
@@ -102,7 +103,7 @@ namespace function_test_1
 				for(int i = 0; i < infix.Length;i++)
 				{
 					//if the current token is not operator
-					if(!"*+-/^".Contains(infix[i].ToString()))
+					if(!"*+-/^%".Contains(infix[i].ToString()))
 					{
 						postfix += infix[i];
 					}
@@ -121,7 +122,7 @@ namespace function_test_1
 							{
 								//if stack.peek is (+-) then pop to string
 								//while peek is one of these, pop and add, finally push
-								if(operator_stack.Peek() == "+" || operator_stack.Peek() == "-" || operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^")
+								if(operator_stack.Peek() == "+" || operator_stack.Peek() == "-" || operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^" || operator_stack.Peek() == "%")
 								{
 									while(operator_stack.Count != 0)
 									{
@@ -138,9 +139,9 @@ namespace function_test_1
 							//For multiplication/division
 							else
 							{
-								if(operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^")
+								if(operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^" || operator_stack.Peek() == "%")
 								{
-									while(operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^")
+									while(operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^" || operator_stack.Peek() == "%")
 									{
 										postfix += operator_stack.Pop() + ",";
 									}
@@ -175,11 +176,12 @@ namespace function_test_1
 				string[] ans = postfix.Split(',');
 				Stack<double> eval = new Stack<double>();
 				double temp1;
-
+				double temp2;
 				for(int i = 0; i< ans.Length;i++)
 				{
 					temp1 = double.NaN;
-					if("*/+-^".Contains(ans[i]))
+					temp2 = double.NaN;
+					if("*/+-^%".Contains(ans[i]))
 					{
 
 						switch(ans[i])
@@ -210,6 +212,18 @@ namespace function_test_1
 							{
 								temp1 = eval.Pop();
 								eval.Push(Math.Pow(eval.Pop(), temp1));
+								break;
+							}
+							//Case for modulo
+						case("%"):
+							{
+								temp1 = eval.Pop();
+								temp2 = eval.Pop();
+								while(temp2 >= temp1)
+								{
+									temp2 = temp2 - temp1;
+								}
+								eval.Push(temp2);
 								break;
 							}
 						}

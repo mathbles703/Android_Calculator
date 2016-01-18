@@ -45,6 +45,7 @@ namespace function_test_1
 			Button division = FindViewById<Button> (Resource.Id.division);
 			Button power = FindViewById<Button> (Resource.Id.power);
 			Button modulo = FindViewById<Button> (Resource.Id.modulo);
+			Button sin = FindViewById<Button> (Resource.Id.sin);
 
 			Button clear = FindViewById<Button> (Resource.Id.clear);
 			Button clearAll = FindViewById<Button> (Resource.Id.clearall);
@@ -72,10 +73,9 @@ namespace function_test_1
 			multiplication.Click += new EventHandler (MyOperatorClick);
 			division.Click += new EventHandler (MyOperatorClick);
 			modulo.Click += new EventHandler (MyOperatorClick);
-			//when clicked, will insert '^' into infix string
-			//Takes number to left and multiplies itself y-1 times.
-			//In postfix, the two numbers will be to the left of the operator
-			//It will pop off the last 2 numbers, do the power operation, and return the answer to the stack
+
+			sin.Click += new EventHandler (MyOperatorClick);
+
 			power.Click += delegate
 			{
 				if (answer.Text.Length > 0) 
@@ -103,6 +103,8 @@ namespace function_test_1
 				for(int i = 0; i < infix.Length;i++)
 				{
 					//if the current token is not operator
+					//trig function names in this string?
+					//Possibly put these functions into a different branch (SIN/COS/TAN). Segregate the functions to search for operators VS Functions??
 					if(!"*+-/^%".Contains(infix[i].ToString()))
 					{
 						postfix += infix[i];
@@ -208,6 +210,7 @@ namespace function_test_1
 								eval.Push(eval.Pop() / temp1);
 								break;
 							}
+							//case for power
 						case("^"):
 							{
 								temp1 = eval.Pop();

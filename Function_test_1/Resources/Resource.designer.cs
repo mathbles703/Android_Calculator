@@ -50,14 +50,14 @@ namespace function_test_1
 			// aapt resource value: 0x7f050001
 			public const int answer = 2131034113;
 			
-			// aapt resource value: 0x7f050017
-			public const int answerButton = 2131034135;
-			
-			// aapt resource value: 0x7f050015
-			public const int clear = 2131034133;
+			// aapt resource value: 0x7f050018
+			public const int answerButton = 2131034136;
 			
 			// aapt resource value: 0x7f050016
-			public const int clearall = 2131034134;
+			public const int clear = 2131034134;
+			
+			// aapt resource value: 0x7f050017
+			public const int clearall = 2131034135;
 			
 			// aapt resource value: 0x7f050010
 			public const int division = 2131034128;
@@ -71,8 +71,8 @@ namespace function_test_1
 			// aapt resource value: 0x7f050005
 			public const int four = 2131034117;
 			
-			// aapt resource value: 0x7f050013
-			public const int infix = 2131034131;
+			// aapt resource value: 0x7f050014
+			public const int infix = 2131034132;
 			
 			// aapt resource value: 0x7f050000
 			public const int label = 2131034112;
@@ -92,14 +92,17 @@ namespace function_test_1
 			// aapt resource value: 0x7f05000c
 			public const int point = 2131034124;
 			
-			// aapt resource value: 0x7f050014
-			public const int postfix = 2131034132;
+			// aapt resource value: 0x7f050015
+			public const int postfix = 2131034133;
 			
 			// aapt resource value: 0x7f050011
 			public const int power = 2131034129;
 			
 			// aapt resource value: 0x7f050008
 			public const int seven = 2131034120;
+			
+			// aapt resource value: 0x7f050013
+			public const int sin = 2131034131;
 			
 			// aapt resource value: 0x7f050007
 			public const int six = 2131034119;

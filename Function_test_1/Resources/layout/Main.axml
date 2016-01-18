@@ -133,11 +133,18 @@
         android:text="x^y" />
     <Button
         android:id="@+id/modulo"
-        android:layout_width="60dp"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/power"
         android:layout_alignLeft="@id/power"
         android:text="%" />
+    <Button
+        android:id="@+id/sin"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/modulo"
+        android:layout_alignLeft="@id/modulo"
+        android:text="sin" />
 <!--TESTING-->
     <Button
         android:id="@+id/infix"

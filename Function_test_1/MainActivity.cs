@@ -105,7 +105,7 @@ namespace function_test_1
 					//if the current token is not operator
 					//trig function names in this string?
 					//Possibly put these functions into a different branch (SIN/COS/TAN). Segregate the functions to search for operators VS Functions??
-					if(!"*+-/^%".Contains(infix[i].ToString()))
+					if(!"*+-/^%sin".Contains(infix[i].ToString()))
 					{
 						postfix += infix[i];
 					}
@@ -122,9 +122,10 @@ namespace function_test_1
 							//For addition/subtraction
 							if("+-".Contains(infix[i].ToString()))
 							{
-								//if stack.peek is (+-) then pop to string
+								//if stack.peek is equal or greater (+-) then pop to string
 								//while peek is one of these, pop and add, finally push
-								if(operator_stack.Peek() == "+" || operator_stack.Peek() == "-" || operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^" || operator_stack.Peek() == "%")
+//								if(operator_stack.Peek() == "+" || operator_stack.Peek() == "-" || operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^" || operator_stack.Peek() == "%")
+								if(1==1)
 								{
 									while(operator_stack.Count != 0)
 									{
@@ -133,23 +134,28 @@ namespace function_test_1
 									operator_stack.Push(infix[i].ToString());
 								}
 							}
+							//For multiplication/division
+							else if(operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^" || operator_stack.Peek() == "%")
+							{
+								while(operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^" || operator_stack.Peek() == "%")
+								{
+									postfix += operator_stack.Pop() + ",";
+								}
+								
+								operator_stack.Push(infix[i].ToString());
+							}
+					//FOR SIN FUNCTION
+							else if(operator_stack.Peek() == "sin")
+							{
+								while(operator_stack.Peek() == "sin" || operator_stack.Peek() == "^")
+								{
+									postfix += operator_stack.Pop() + ",";
+								}
+							}
 							//For power 
 							else if(infix[i].ToString() == "^")
 							{
 								operator_stack.Push(infix[i].ToString());
-							}
-							//For multiplication/division
-							else
-							{
-								if(operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^" || operator_stack.Peek() == "%")
-								{
-									while(operator_stack.Peek() == "*" || operator_stack.Peek() == "/" || operator_stack.Peek() == "^" || operator_stack.Peek() == "%")
-									{
-										postfix += operator_stack.Pop() + ",";
-									}
-								}
-								operator_stack.Push(infix[i].ToString());
-
 							}
 						}
 					}
@@ -228,6 +234,11 @@ namespace function_test_1
 								}
 								eval.Push(temp2);
 								break;
+							}
+						case("sin"):
+							{
+								temp1 = eval.Pop();
+								eval.Push(Math.Sin(temp1));
 							}
 						}
 					}
